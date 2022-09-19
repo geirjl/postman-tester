@@ -1,0 +1,293 @@
+{
+	"info": {
+		"_postman_id": "8e5e3c5f-7166-4ddb-84d6-6064033ad38c",
+		"name": "FREMTIND - WORKSHOP - STARTPACK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4553218"
+	},
+	"item": [
+		{
+			"name": "OPPGAVE 1",
+			"item": [
+				{
+					"name": "Get authorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"var jsonResponse = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"authToken\", jsonResponse.authToken);\r",
+									"console.info(\"authToken = \" + jsonResponse.authToken)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://16.170.205.171:8080/bank/api/v1/auth?password=Demo123!&username=jsmith@demo.io",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"205",
+								"171"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "Demo123!"
+								},
+								{
+									"key": "username",
+									"value": "jsmith@demo.io"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OPPGAVE 2",
+			"item": [
+				{
+					"name": "Get authorized",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"var jsonResponse = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"authToken\", jsonResponse.authToken);\r",
+									"console.info(\"authToken = \" + jsonResponse.authToken)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://16.170.205.171:8080/bank/api/v1/auth?password=Demo123!&username=",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"205",
+								"171"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "password",
+									"value": "Demo123!"
+								},
+								{
+									"key": "username",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Account for user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://16.170.205.171:8080/bank/api/v1/user/account",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"205",
+								"171"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"user",
+								"account"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "OPPGAVE 3",
+			"item": []
+		},
+		{
+			"name": "OPPGAVE 4",
+			"item": []
+		},
+		{
+			"name": "OPPGAVE 5",
+			"item": [
+				{
+					"name": "Get authorized as administrator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"var jsonResponse = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"authToken\", jsonResponse.authToken);\r",
+									"console.log(\"authToken = \" + jsonResponse.authToken)\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://16.170.205.171:8080/bank/api/v1/auth?username=admin@demo.io&password=Demo123!",
+							"protocol": "http",
+							"host": [
+								"16",
+								"170",
+								"205",
+								"171"
+							],
+							"port": "8080",
+							"path": [
+								"bank",
+								"api",
+								"v1",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "admin@demo.io"
+								},
+								{
+									"key": "password",
+									"value": "Demo123!"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "authToken",
+			"value": ""
+		},
+		{
+			"key": "userId",
+			"value": ""
+		}
+	]
+}
